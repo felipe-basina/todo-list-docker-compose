@@ -3,6 +3,7 @@ package com.example.todo.list.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Builder;
@@ -13,16 +14,17 @@ import lombok.Data;
 @Builder
 public class Todo {
 
-	private Long id;
+	@Id
+	private String id;
 	
 	private String descricao;
 	
 	private String status;
 	
-	private LocalDate date;
+	private LocalDate date = LocalDate.now();
 	
-	private LocalDateTime creationDate;
+	private LocalDateTime creationDate = LocalDateTime.now();
 	
-	private LocalDateTime updateDate;
+	private LocalDateTime updateDate = LocalDateTime.now();
 	
 }
