@@ -1,6 +1,0 @@
-com/example/todo/list/TodoListApplication.class
-com/example/todo/list/service/TodoService.class
-com/example/todo/list/model/Todo$TodoBuilder.class
-com/example/todo/list/model/Todo.class
-com/example/todo/list/controller/TodoListController.class
-com/example/todo/list/repository/TodoRepository.class
