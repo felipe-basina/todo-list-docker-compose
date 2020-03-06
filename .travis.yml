@@ -15,7 +15,7 @@ script:
 
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-  - docker tag $DOCKER_APP $DOCKER_USER/back:$TRAVIS_BUILD_NUMBER
+  - docker tag $DOCKER_APP $DOCKER_USER/$DOCKER_APP:$TRAVIS_BUILD_NUMBER
   - docker push $DOCKER_USER/$DOCKER_APP:$TRAVIS_BUILD_NUMBER
   - docker tag $DOCKER_APP $DOCKER_USER/$DOCKER_APP:latest
   - docker push $DOCKER_USER/$DOCKER_APP:latest
