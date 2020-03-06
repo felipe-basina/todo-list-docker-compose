@@ -2,4 +2,20 @@ language: java
 
 jdk: openjdk8
 
-script: mvn clean package
+sudo: required
+services:
+  - docker
+
+env:
+  DOCKER_APP: todo-list
+
+script: 
+  - mvn clean package
+  - docker build -t $DOCKER_APP .
+
+after_success:
+  - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+  - docker tag $DOCKER_APP $DOCKER_USER/back:$TRAVIS_BUILD_NUMBER
+  - docker push $DOCKER_USER/$DOCKER_APP:$TRAVIS_BUILD_NUMBER
+  - docker tag $DOCKER_APP $DOCKER_USER/$DOCKER_APP:latest
+  - docker push $DOCKER_USER/$DOCKER_APP:latest
