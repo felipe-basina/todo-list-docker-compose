@@ -1,4 +1,6 @@
 # todo-list-docker-compose
+[![Build Status](https://travis-ci.org/felipe-basina/todo-list-docker-compose.svg?branch=master)](https://travis-ci.org/felipe-basina/todo-list-docker-compose.svg?branch=master)
+
 Projeto spring boot + mongodb rodando com docker compose
 # Commands
 Generate image
