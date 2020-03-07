@@ -24,7 +24,7 @@ after_success:
 deploy:
  provider: heroku
  api-key: 
-  secure: $HEROKU_API_KEY
+  secure: $HEROKU_APP_KEY
  app: $HEROKU_APP_NAME
 
  before_install:
