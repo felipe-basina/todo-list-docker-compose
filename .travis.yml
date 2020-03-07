@@ -8,6 +8,7 @@ services:
 
 env:
   DOCKER_APP: todo-list
+  HEROKU_APP_NAME: ontodolist
 
 script: 
   - mvn clean package
@@ -19,3 +20,12 @@ after_success:
   - docker push $DOCKER_USER/$DOCKER_APP:$TRAVIS_BUILD_NUMBER
   - docker tag $DOCKER_APP $DOCKER_USER/$DOCKER_APP:latest
   - docker push $DOCKER_USER/$DOCKER_APP:latest
+  
+deploy:
+ provider: heroku
+ api-key: 
+  secure: $HEROKU_API_KEY
+ app: $HEROKU_APP_NAME
+
+ before_install:
+  - chmod +x mvnw
