@@ -1,14 +1,30 @@
 version: "3"
 services:
-  todo-database:
-    image: mongo:3.2.4
-    container_name: "todo-database"
-    ports:
-      - 27017:27017
-    command: --smallfiles
+    
   todo-api:
+    build: .
     image: todo-list-image
+    container_name: todo-list-image
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/todo_db
     ports:
       - 9091:8080
+    networks:
+      - todo-list-network
+    depends_on:
+      - mongo
     links:
-      - todo-database
+      - mongo
+
+  mongo:
+    image: mongo
+    container_name: todo-mongodb
+    ports:
+      - 27017:27017
+    networks:
+      - todo-list-network
+      
+networks:
+  todo-list-network:
+     driver: bridge
+  
